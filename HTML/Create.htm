@@ -30,16 +30,14 @@
 
 <script>
     document.addEventListener('DOMContentLoaded',function(){
-      const urlparams = new URLSearchParams(window.location.search);
-      const id = parseInt(urlparams.get('id'));
         const btnsubmit = document.forms['product-from']['submit'];
         const name = document.forms['product-from']['name'];
-        const price = document.forms['product-from']['wage'];
+        const wage = document.forms['product-from']['wage'];
         btnsubmit.onclick = function(e){
             e.preventDefault();
             var objectToSend = {
                 'name' : name.value,
-                'wage' : price.value,
+                'wage' : wage.value,
             }
             var data = JSON.stringify(objectToSend);
             var xhr = new XMLHttpRequest();
