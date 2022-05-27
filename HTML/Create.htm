@@ -13,32 +13,38 @@
 
 <div class="container">
   <h2>form</h2>
-  <form name="product-from">
+  <form name="from">
     <div class="form-group">
       <label for="name">Name:</label>
       <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" value="">
     </div>
     <div class="form-group">
-      <label for="wage">Wage:</label>
-      <input type="number" class="form-control" id="wage" placeholder="Enter wage" name="wage" value="">
+      <label for="date">date:</label>
+      <input type="text" class="form-control" id="date" placeholder="Enter date" name="date" value="">
+    </div>
+    <div class="form-group">
+      <label for="addr">addr:</label>
+      <input type="text" class="form-control" id="addr" placeholder="Enter addr" name="addr" value="">
     </div>
 
     <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-    <button type="reset" class="btn btn-warning">Redet</button>
+    <button type="reset" class="btn btn-warning">Reset</button>
   </form>
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded',function(){
-        const btnsubmit = document.forms['product-from']['submit'];
-        const name = document.forms['product-from']['name'];
-        const wage = document.forms['product-from']['wage'];
+        const btnsubmit = document.forms['from']['submit'];
+        const name = document.forms['from']['name'];
+        const date = document.forms['from']['date'];
+        const addr = document.forms['from']['addr'];
         btnsubmit.onclick = function(e){
             e.preventDefault();
-            var objectToSend = {
-                'name' : name.value,
-                'wage' : wage.value,
-            }
+            var objectToSend =    {
+        "addr": addr.value,
+        "name": name.value,
+        "birth": date.value,
+    }
             var data = JSON.stringify(objectToSend);
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function(){
@@ -47,7 +53,7 @@
                     window.location.href = 'List.html';
                 }
             }
-            xhr.open('POST','http://localhost:8080/api/V1/employess',false);
+            xhr.open('POST','http://localhost:8080/api/V1/cadidate',false);
             xhr.setRequestHeader('Content-Type','application/json'); 
             xhr.send(data);
         }
